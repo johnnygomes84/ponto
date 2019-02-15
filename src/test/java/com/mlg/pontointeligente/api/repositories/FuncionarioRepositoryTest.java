@@ -20,7 +20,6 @@ import com.mlg.pontointeligente.api.enums.PerfilEnum;
 import com.mlg.pontointeligente.api.utils.PasswordUtils;
 
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
@@ -62,28 +61,28 @@ public class FuncionarioRepositoryTest {
 
 	@Test
 	public void testBuscarFuncionarioPorEmailECpf() {
-		Funcionario funcionario = this.funcionarioRepository.findByEmailOrCpf(CPF, EMAIL);
+		Funcionario funcionario = this.funcionarioRepository.findByEmailOrCpf(EMAIL, CPF);
 
 		assertNotNull(funcionario);
 	}
 
 	@Test
 	public void testBuscarFuncionarioPorEmailOuCpfParaEmailInvalido() {
-		Funcionario funcionario = this.funcionarioRepository.findByEmailOrCpf(CPF, "email@invalido.com");
+		Funcionario funcionario = this.funcionarioRepository.findByEmailOrCpf("email@invalido.com", CPF);
 
 		assertNotNull(funcionario);
 	}
 
 	@Test
 	public void testBuscarFuncionarioPorEmailECpfParaCpfInvalido() {
-		Funcionario funcionario = this.funcionarioRepository.findByEmailOrCpf("12345678901", EMAIL);
+		Funcionario funcionario = this.funcionarioRepository.findByEmailOrCpf(EMAIL,"12345678901");
 
 		assertNotNull(funcionario);
 	}
 
 	private Funcionario obterDadosFuncionario(Empresa empresa) throws NoSuchAlgorithmException {
 		Funcionario funcionario = new Funcionario();
-		funcionario.setNome("Fulano de Tal");
+		funcionario.setName("Fulano de Tal");
 		funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);
 		funcionario.setSenha(PasswordUtils.gerarBCrypt("123456"));
 		funcionario.setCpf(CPF);
