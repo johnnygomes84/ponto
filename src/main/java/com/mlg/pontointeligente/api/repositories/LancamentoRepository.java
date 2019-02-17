@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mlg.pontointeligente.api.entities.Lancamento;
@@ -17,6 +18,7 @@ import com.mlg.pontointeligente.api.entities.Lancamento;
 @NamedQueries({
 				@NamedQuery(name="LancamentoRepository.findByFuncionarioId",
 						query="SELECT lanc FROM Lancamento lanc WHERE lanc.funcionario.id = :funcionarioId")})
+@Repository
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
 
 	List<Lancamento> findByFuncionarioId(@Param("funcionarioId")Long funcionarioId);
