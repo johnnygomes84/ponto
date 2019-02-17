@@ -33,8 +33,8 @@ public class Funcionario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "name", nullable = false)
-	private String name;
+	@Column(name = "nome", nullable = false)
+	private String nome;
 
 	@Column(name = "email", nullable = false)
 	private String email;
@@ -100,12 +100,12 @@ public class Funcionario implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {
@@ -198,7 +198,7 @@ public class Funcionario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Funcionario [id=" + id + ", nome=" + name + ", email=" + email + ", perfil=" + perfil + "]";
+		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + ", perfil=" + perfil + "]";
 	}
 	
 	
