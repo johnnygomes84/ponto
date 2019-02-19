@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -132,30 +133,6 @@ public class Funcionario implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public BigDecimal getValorHora() {
-		return valorHora;
-	}
-
-	public void setValorHora(BigDecimal valorHora) {
-		this.valorHora = valorHora;
-	}
-
-	public Float getQtdHorasTrabalhoDia() {
-		return qtdHorasTrabalhoDia;
-	}
-
-	public void setQtdHorasTrabalhoDia(Float qtdHorasTrabalhoDia) {
-		this.qtdHorasTrabalhoDia = qtdHorasTrabalhoDia;
-	}
-
-	public Float getQtdHorasAlmoco() {
-		return qtdHorasAlmoco;
-	}
-
-	public void setQtdHorasAlmoco(Float qtdHorasAlmoco) {
-		this.qtdHorasAlmoco = qtdHorasAlmoco;
-	}
-
 	public PerfilEnum getPerfil() {
 		return perfil;
 	}
@@ -195,6 +172,35 @@ public class Funcionario implements Serializable {
 	public void setLancamentos(List<Lancamento> lancamentos) {
 		this.lancamentos = lancamentos;
 	}
+	
+	
+	@Transient
+	public Optional<BigDecimal> getValorHoraOpt() {
+		return Optional.ofNullable(valorHora);
+	}
+
+	public void setValorHora(BigDecimal valorHora) {
+		this.valorHora = valorHora;
+	}
+	
+	@Transient
+	public Optional<Float> getQtdHorasTrabalhoDiaOpt() {
+		return Optional.ofNullable(qtdHorasTrabalhoDia);
+	}
+
+	public void setQtdHorasTrabalhoDia(Float qtdHorasTrabalhoDia) {
+		this.qtdHorasTrabalhoDia = qtdHorasTrabalhoDia;
+	}
+	
+	@Transient
+	public Optional<Float> getQtdHorasAlmocoOpt() {
+		return Optional.ofNullable(qtdHorasAlmoco);
+	}
+
+	public void setQtdHorasAlmoco(Float qtdHorasAlmoco) {
+		this.qtdHorasAlmoco = qtdHorasAlmoco;
+	}
+	
 
 	@Override
 	public String toString() {
